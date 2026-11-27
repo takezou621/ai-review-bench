@@ -7,3 +7,7 @@ app.use(express.json());
 app.use(userRouter);
 app.use(documentRouter);
 app.get("/health", (_req, res) => res.json({ ok: true }));
+
+app.get("/health/detail", async (_req, res) => {
+  res.json({ ok: true, uptimeSec: Math.round(process.uptime()) });
+});
