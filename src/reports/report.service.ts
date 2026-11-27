@@ -8,7 +8,9 @@ export async function revenueReport() {
 }
 
 export async function userDirectory() {
-  const { findAll: fa } = await import("../db");
-  const users = await fa("users");
-  return users.map((u) => ({ id: u.id, name: u.name }));
+  const users = await findAll("users");
+  return users.map((u) => ({
+    id: u.id,
+    displayName: (u.profile as { displayName: string }).displayName,
+  }));
 }
