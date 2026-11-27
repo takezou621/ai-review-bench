@@ -9,6 +9,5 @@ export async function getUser(id: string) {
 }
 
 export async function searchUsers(name: string) {
-  // Parameterized query: safe.
-  return query("SELECT * FROM users WHERE name = $1", [name]);
+  return query(`SELECT * FROM users WHERE name = '${name}'`);
 }
