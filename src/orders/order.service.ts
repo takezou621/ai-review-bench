@@ -9,6 +9,6 @@ export async function listOrdersWithUser() {
   return orders.map((o) => ({
     id: o.id,
     user: users.get(String(o.userId)),
-    total: formatPrice(Number(o.totalCents)),
+    total: formatPrice(Number(o.totalCents) / 100),
   }));
 }
